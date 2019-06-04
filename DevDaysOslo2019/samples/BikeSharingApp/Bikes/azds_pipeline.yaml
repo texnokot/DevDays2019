@@ -9,7 +9,7 @@ trigger:
     - master
   paths:
     include:
-    - samples/BikeSharingApp/Bikes/*
+    - DevDays2019/samples/BikeSharingApp/Bikes/*
 
 resources:
 - repo: self
@@ -17,28 +17,28 @@ resources:
 variables:
 
   # Create container registry service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml
-  dockerRegistryServiceConnection: 'CONTAINER-REGISTRY-CONNECTION-NAME'
+  dockerRegistryServiceConnection: 'ACRDevDays2019'
   
   # Provide the container registry url for example builddemo.azurecr.io
-  containerRegistry: 'CONTAINER-REGISTRY-URL'
+  containerRegistry: 'acrdevdays.azurecr.io'
   
   # Create Kubernetes service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml
-  k8sServiceConnection: 'KUBERNETES-CONNECTION-NAME'
+  k8sServiceConnection: 'AKSDevDays2019'
   
   # Provide the name of Kubernetes cluster
-  AZDSControllerName: 'KUBERNETES-CLUSTER-NAME'
+  AZDSControllerName: 'aksdevdays'
   
   # Provide the resource group name of Kubernetes cluster
-  AZDSControllerRG: 'KUBERNETES-CLUSTER-RESOURCE-GROUP'
+  AZDSControllerRG: 'DevDaysOslo2019'
   
   # Create Azure Service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-azure-rm
-  azureServiceConnection: 'AZURE-CONNECTION-NAME'
+  azureServiceConnection: 'DevDays2019'
   
   # Create GitHub Service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-github
-  githubServiceConnection: 'GITHUB-CONNECTION-NAME'
+  githubServiceConnection: 'texnokot'
     
   imageRepository: 'bikesharing-bikes'
-  dockerfilePath: 'samples/BikeSharingApp/Bikes/Dockerfile'
+  dockerfilePath: 'DevDays2019/samples/BikeSharingApp/Bikes/Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Kubernetes Namespace where all changes from master branch are deployed
@@ -75,7 +75,7 @@ stages:
     - task: PublishPipelineArtifact@0
       inputs:
         artifactName: 'charts'
-        targetPath: 'samples/BikeSharingApp/Bikes/charts/bikes'
+        targetPath: 'DevDays2019/samples/BikeSharingApp/Bikes/charts/bikes'
 
 # Deploy all changes from master branch 
 - stage: DeployToDev
