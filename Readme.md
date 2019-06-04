@@ -55,4 +55,10 @@ Replace the KUBERNETES-CLUSTER-RESOURCE-GROUP (line 32) with your Azure Resource
 Replace the AZURE-CONNECTION-NAME (line 35) with your Azure Resource Manager service connection name.
 Replace GITHUB-CONNECTION-NAME (line 38) with your GitHub service connection name.
 
-# Run it, explore it
+# Run it, explore it (screenshot for deploy)
+
+git checkout -b bike-images
+
+# Open Bikes/server.js with a text editor and remove lines 233 and 234
+Make changes push it...
+It triggers pipeline
