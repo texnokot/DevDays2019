@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# replace values with proper names
 AKS_RESOURCE_GROUP=DevDaysOslo2019
 AKS_CLUSTER_NAME=aksdevdays
 ACR_RESOURCE_GROUP=DevDaysOslo2019
