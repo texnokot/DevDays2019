@@ -275,7 +275,7 @@ Merge pull request. Once the pull request is merged, the build pipeline will tri
 
 # 4. Reference list
 
-Workshop is inpired by Build 2019 session: ["End to end application development and DevOps on Azure Kubernetes Service - BRK3039"](https://www.youtube.com/watch?v=8MKtePROi30)
+Workshop is inspired by Build 2019 session: ["End to end application development and DevOps on Azure Kubernetes Service - BRK3039"](https://www.youtube.com/watch?v=8MKtePROi30)
 
 * The article ["Kubernetes, GitHub, and DevOps: Putting it all together to increase confidence in PR reviews"](https://medium.com/microsoftazure/kubernetes-github-and-devops-putting-it-all-together-to-increase-confidence-in-pull-request-3797e8fea3f7)
 * Bikes application is from Azure Dev Spaces examples Github: https://github.com/Azure/dev-spaces
