@@ -45,6 +45,7 @@ az acr login --name acrdevdays
 # Azure Resource Manager (Service Principal Authentication)
 
 #Navigate to pipelines and create a new pipeline
+# from: DevDaysOslo2019/samples/BikeSharingApp/Bikes/azds_pipeline.yaml
 # Replace service connections strings
 Replace CONTAINER-REGISTRY-CONNECTION-NAME (line 20) with the Docker Registry service connection name.
 Replace CONTAINER-REGISTRY-URL (line 23). You can find this information in the Azure Portal under your Azure Container Registry. It should look something like this: login server: builddemo.azurecr.io.
@@ -53,3 +54,5 @@ Replace the KUBERNETES-CLUSTER-NAME (line 29) with your AKS cluster name.
 Replace the KUBERNETES-CLUSTER-RESOURCE-GROUP (line 32) with your Azure Resource Group name in which you have created the cluster.
 Replace the AZURE-CONNECTION-NAME (line 35) with your Azure Resource Manager service connection name.
 Replace GITHUB-CONNECTION-NAME (line 38) with your GitHub service connection name.
+
+# Run it, explore it
