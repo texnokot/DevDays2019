@@ -25,7 +25,9 @@ Content
 # 1. Introduction
 
 One of very popular and widely used Git workflows are based on features branches, which allows efficiently to collaborate. When feature branch is finished development team submits the pull request for the review before merging into the master branch.
+
 How to be sure that the pull request will not break the master branch when dealing with microservices? Handling separate environment for each branch, environments on developers machines or/and dozens of mock-ups? That's not scalable. 
+
 With Azure Dev Spaces and Azure Pipelines, it is possible to quickly test  PR code in the context of the broader application running in Azure Kubernetes Service (AKS). 
 How to set up that workflow is explained in upcoming sections. 
 
