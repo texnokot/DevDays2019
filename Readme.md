@@ -6,42 +6,46 @@ Content
 ---
 <!-- TOC -->
 - [1. Introduction](#1-introduction)
-- [2. What should expect to learn](#2-what-should-expect-to-learn)
-- [3. Prerequisites](#3-prerequisites)
-- [4. Workshop steps](#4-workshop-steps)
-  - [4.1. Create AKS cluster with enabled Azure Dev Spaces](#41-create-aks-cluster-with-enabled-azure-dev-spaces)
-  - [4.2. Create Azure Container Registry](#42-create-azure-container-registry)
-  - [4.3. Get the sample project](#43-get-the-sample-project)
-  - [4.4. Run the application in AKS cluster](#44-run-the-application-in-aks-cluster)
-    - [4.4.1. Retrieve the HostSuffix for dev namespace](#441-retrieve-the-hostsuffix-for-dev-namespace)
-    - [4.4.2. Update the Helm chart with your Host Suffix](#442-update-the-helm-chart-with-your-host-suffix)
-    - [4.4.3. Run the application in Kubernetes](#443-run-the-application-in-kubernetes)
-  - [4.5. Prepare CI/CD pipeline](#45-prepare-cicd-pipeline)
-    - [4.5.1. Create Service Connections](#451-create-service-connections)
-    - [4.5.2. Create a new pipeline](#452-create-a-new-pipeline)
-  - [4.6. Test and work with your pull requests](#46-test-and-work-with-your-pull-requests)
-    - [4.6.1. Pull Request Flow](#461-pull-request-flow)
-    - [4.6.2. Explore your pull request changes](#462-explore-your-pull-request-changes)
-- [5. Reference list](#5-reference-list)
+- [2. Prerequisites](#2-prerequisites)
+- [3. Workshop steps](#3-workshop-steps)
+  - [3.1. Create AKS cluster with enabled Azure Dev Spaces](#31-create-aks-cluster-with-enabled-azure-dev-spaces)
+  - [3.2. Create Azure Container Registry](#32-create-azure-container-registry)
+  - [3.3. Get the sample project](#33-get-the-sample-project)
+  - [3.4. Run the application in AKS cluster](#34-run-the-application-in-aks-cluster)
+    - [3.4.1. Retrieve the HostSuffix for dev namespace](#341-retrieve-the-hostsuffix-for-dev-namespace)
+    - [3.4.2. Update the Helm chart with your Host Suffix](#342-update-the-helm-chart-with-your-host-suffix)
+    - [3.4.3. Run the application in Kubernetes](#343-run-the-application-in-kubernetes)
+  - [3.5. Prepare CI/CD pipeline](#35-prepare-cicd-pipeline)
+    - [3.5.1. Create Service Connections](#351-create-service-connections)
+    - [3.5.2. Create a new pipeline](#352-create-a-new-pipeline)
+  - [3.6. Test and work with your pull requests](#36-test-and-work-with-your-pull-requests)
+    - [3.6.1. Pull Request Flow](#361-pull-request-flow)
+    - [3.6.2. Explore your pull request changes](#362-explore-your-pull-request-changes)
+- [4. Reference list](#4-reference-list)
 
 # 1. Introduction
 
-# 2. What should expect to learn
+# 2. Prerequisites
 
-# 3. Prerequisites
+* **An Azure subscription**. To create a free account go [here](https://azure.microsoft.com/en-gb/free/?utm_source=jeliknes&utm_medium=blog&utm_campaign=storage&WT.mc_id=storage-blog-jeliknes)
+* **Azure Command Line (Azure CLI)** installed on your machine. To install go [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+* **Helm**. To install go [here](https://github.com/helm/helm/blob/master/docs/install.md)
+* **Azure DevOps account**. To create account follow [here](https://azure.microsoft.com/en-in/services/devops/pipelines/)
 
-# 4. Workshop steps
-## 4.1. Create AKS cluster with enabled Azure Dev Spaces
+# 3. Workshop steps
+
+
+## 3.1. Create AKS cluster with enabled Azure Dev Spaces
 
 AKS cluster should be created in a [supported region for AKS Dev Spaces](https://docs.microsoft.com/en-us/azure/dev-spaces/about#supported-regions-and-configurations)
 
-Create a resource group DevDaysOslo2019 where all resources will be located
+Create a resource group DevDaysOslo2019 where all resources will be located:
 
 ~~~~
 $ az group create --name DevDaysOslo2019 --location westeurope
 ~~~~
 
-Create an AKS cluster aksdevdays
+Create an AKS cluster aksdevdays:
 
 ~~~~
 $ az aks create -g DevDaysOslo2019 -n aksdevdays --location westeurope --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
@@ -53,7 +57,7 @@ Enable Azure Dev Spaces on created AKS cluster
 $ az aks use-dev-spaces -g DevDaysOslo2019 -n aksdevdays --space dev --yes
 ~~~~
 
-## 4.2. Create Azure Container Registry
+## 3.2. Create Azure Container Registry
 
 We need container registry where to store containers for AKS. Create acr *acrdevdays* by running the following command:
 
@@ -73,7 +77,7 @@ Grant permssions for your AKS to use ACR by running aksgrant.sh command from the
 $ ./aksgrant.sh
 ~~~~
 
-## 4.3. Get the sample project
+## 3.3. Get the sample project
 Fork the workshop github repository to your Github from <https://github.com/texnokot/DevDays2019>
 
 Clone your fork to your computer and navigate to the application directory
@@ -83,9 +87,9 @@ $ git clone https://github.com/YOUR_GITHUB_ACCOUNT/DevDays2019.git
 $ cd BikeSharingApp/
 ~~~~
 
-## 4.4. Run the application in AKS cluster
-### 4.4.1. Retrieve the HostSuffix for dev namespace
-Use the `azds show-context` command to show your AKS cluster’s HostSuffix for dev. When `azds` runs first time it installs in command line tool
+## 3.4. Run the application in AKS cluster
+### 3.4.1. Retrieve the HostSuffix for dev namespace
+Use the `azds show-context` command to show your AKS cluster’s HostSuffix for dev. When `azds` runs first time it installs istelf in command line tool
 
 ~~~~
 $ azds show-context
@@ -95,9 +99,9 @@ Name          ResourceGroup     DevSpace    HostSuffix
 aksdevdays  DevDaysOslo2019  dev       5bsfq5jg95.weu.azds.io
 ~~~~
 
-### 4.4.2. Update the Helm chart with your Host Suffix
+### 3.4.2. Update the Helm chart with your Host Suffix
 Open *charts/values.yaml* and replace all instances of *<REPLACE_ME_WITH_HOST_SUFFIX>* with the *HostSuffix* value you retrieved earlier. Save your changes and close the file.
-### 4.4.3. Run the application in Kubernetes
+### 3.4.3. Run the application in Kubernetes
 The commands for running the sample application on Kubernetes are part of an existing process and have no dependency on Azure Dev Spaces tooling. In this case, Helm is the tooling used to run this sample application but other tooling could be used to run your entire application in a namespace within a cluster. The Helm commands are targeting the dev space named dev you created earlier, but this dev space is also a Kubernetes namespace. As a result, dev spaces can be targeted by other tooling the same as other namespaces.
 
 You can use Azure Dev Spaces for team development after an application is running in a cluster regardless of the tooling used to deploy it.
@@ -144,39 +148,41 @@ Select Aurelia Briggs (customer) as the user. Then select a bike to rent.
 PICTURE HERE
 Notice the image for the bike is using a placeholder. You are going modify it to use an actual image of the bike.
 
-## 4.5. Prepare CI/CD pipeline
+## 3.5. Prepare CI/CD pipeline
 
 If you don't have the Azure Pipelines app in your Github account already, install it from: <https://github.com/marketplace/azure-pipelines>.
 
 Install [Github AzureDevOps Rest Api Integration](https://marketplace.visualstudio.com/items?itemName=jikuma.devops-github-extension) extension in your Azure DevOps organization where Project was created.
 
 In Azure DevOps under Preview features, enable *Multi-stage pipelines*.
-PICTURE HERE
+![](https://githubpictures.blob.core.windows.net/devopsdayspost/preview.png)
 
-### 4.5.1. Create Service Connections
+### 3.5.1. Create Service Connections
 
 * Docker Registry (Azure Container Registry)
+![Docker Registry](https://githubpictures.blob.core.windows.net/devopsdayspost/DockerRegistry.png)
 * Kubernetes (Azure Subscription)
+![Kubernetes](https://githubpictures.blob.core.windows.net/devopsdayspost/KubernetesService.png)
 * Azure Resource Manager (Service Principal Authentication)
+![Azure Resource Manager](https://githubpictures.blob.core.windows.net/devopsdayspost/AZRService.png)
 * GitHub
+![Github Service](https://githubpictures.blob.core.windows.net/devopsdayspost/GithubService.png)
 
-PICTURES HERE
-
-### 4.5.2. Create a new pipeline
+### 3.5.2. Create a new pipeline
 
 After you have created your Service Connections, navigate to Pipelines and create a new Pipeline. In the next step you will be asked to point to your code repository. Select GitHub and choose the repository you forked earlier.
 
-PICTURE HERE
+![Github repository](https://githubpictures.blob.core.windows.net/devopsdayspost/GithubRepository.png)
 
 Azure Pipelines will analyze your repository content and suggest CI/CD templates.
 
 Select *“Existing Azure Pipelines YAML file”*.
 
-PICTURE HERE
+![Github placed YAML](https://githubpictures.blob.core.windows.net/devopsdayspost/PipelineExistingYaml.png)
 
 Type the path *BikeSharingApp/Bikes/azds_pipeline.yaml* to the YAML file in the Bikes directory and continue.
 
-PICTURE HERE
+![YAML](https://githubpictures.blob.core.windows.net/devopsdayspost/azds_pipeline.png)
 
 Edit the YAML. Consider opening your service connections in a separate tab since you will reference them frequently. Do following:
 
@@ -190,9 +196,9 @@ Edit the YAML. Consider opening your service connections in a separate tab since
 
 All is ready and works! blablabla
 
-## 4.6. Test and work with your pull requests
+## 3.6. Test and work with your pull requests
 
-### 4.6.1. Pull Request Flow
+### 3.6.1. Pull Request Flow
 
 Navigate to your forked repository on GitHub and create a new pull request. The base branch will be master and the branch you are comparing is *bike-images*.
 
@@ -200,7 +206,7 @@ Navigate to your build pipeline and confirm it has started building the *Bikes* 
 
 Once the build pipeline has successfully completed, navigate back to your pull request on GitHub.
 
-### 4.6.2. Explore your pull request changes
+### 3.6.2. Explore your pull request changes
 
 In the most recent build check, click Show all checks.
 
@@ -216,4 +222,4 @@ Now that we have our changes running in a new dev space, this is a great opportu
 
 Once the pull request is merged, the build pipeline will trigger and redeploy the parent branch to the parent dev space. In our scenario the master branch is deployed to the dev space named “dev”. You should try this exercise on your own.
 
-# 5. Reference list
+# 4. Reference list
