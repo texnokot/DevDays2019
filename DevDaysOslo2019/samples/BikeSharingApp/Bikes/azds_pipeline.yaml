@@ -9,7 +9,7 @@ trigger:
     - master
   paths:
     include:
-    - DevDays2019/samples/BikeSharingApp/Bikes/*
+    - DevDaysOslo2019/samples/BikeSharingApp/Bikes/*
 
 resources:
 - repo: self
@@ -38,7 +38,7 @@ variables:
   githubServiceConnection: 'GithubDevDays2019'
     
   imageRepository: 'bikesharing-bikes'
-  dockerfilePath: 'DevDays2019/samples/BikeSharingApp/Bikes/Dockerfile'
+  dockerfilePath: 'DevDaysOslo2019/samples/BikeSharingApp/Bikes/Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Kubernetes Namespace where all changes from master branch are deployed
@@ -75,7 +75,7 @@ stages:
     - task: PublishPipelineArtifact@0
       inputs:
         artifactName: 'charts'
-        targetPath: 'DevDays2019/samples/BikeSharingApp/Bikes/charts/bikes'
+        targetPath: 'DevDaysOslo2019/samples/BikeSharingApp/Bikes/charts/bikes'
 
 # Deploy all changes from master branch 
 - stage: DeployToDev
