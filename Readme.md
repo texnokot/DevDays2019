@@ -24,7 +24,13 @@ Content
 
 # 1. Introduction
 
-![](https://githubpictures.blob.core.windows.net/devopsdayspost/arch.png)
+One of very popular and widely used Git workflows are based on features branches, which allows efficiently to collaborate. When feature branch is finished development team submits the pull request for the review before merging into the master branch.
+How to be sure that the pull request will not break the master branch when dealing with microservices? Handling separate environment for each branch, environments on developers machines or/and dozens of mock-ups? That's not scalable. 
+With Azure Dev Spaces and Azure Pipelines, it is possible to quickly test  PR code in the context of the broader application running in Azure Kubernetes Service (AKS). 
+How to set up that workflow is explained in upcoming sections. 
+
+![](https://githubpictures.blob.core.windows.net/devopsdayspost/pipedevspace.png)
+Information about the challenge is in the [presentation](DevOpsCampWorkshop05062019.pdf).
 
 # 2. Prerequisites
 
@@ -267,8 +273,10 @@ Merge pull request. Once the pull request is merged, the build pipeline will tri
 
 # 4. Reference list
 
-* Workshop is based on the article ["Kubernetes, GitHub, and DevOps: Putting it all together to increase confidence in PR reviews"](https://medium.com/microsoftazure/kubernetes-github-and-devops-putting-it-all-together-to-increase-confidence-in-pull-request-3797e8fea3f7)
+Workshop is inpired by Build 2019 session: ["End to end application development and DevOps on Azure Kubernetes Service - BRK3039"](https://www.youtube.com/watch?v=8MKtePROi30)
+
+* The article ["Kubernetes, GitHub, and DevOps: Putting it all together to increase confidence in PR reviews"](https://medium.com/microsoftazure/kubernetes-github-and-devops-putting-it-all-together-to-increase-confidence-in-pull-request-3797e8fea3f7)
 * Bikes application is from Azure Dev Spaces examples Github: https://github.com/Azure/dev-spaces
 * Azure Dev Spaces documentation: https://docs.microsoft.com/en-us/azure/dev-spaces/
+* Azure Dev Spaces Team collaboration: https://docs.microsoft.com/en-us/azure/dev-spaces/quickstart-team-development
 * Stages in Azure DevOps Pipelines: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
-* Build 2019 session: ["End to end application development and DevOps on Azure Kubernetes Service - BRK3039"](https://www.youtube.com/watch?v=8MKtePROi30)
