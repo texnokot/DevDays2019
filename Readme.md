@@ -24,6 +24,8 @@ Content
 
 # 1. Introduction
 
+![](https://githubpictures.blob.core.windows.net/devopsdayspost/arch.png)
+
 # 2. Prerequisites
 
 * **An Azure subscription**. To create a free account go [here](https://azure.microsoft.com/en-gb/free/?utm_source=jeliknes&utm_medium=blog&utm_campaign=storage&WT.mc_id=storage-blog-jeliknes)
