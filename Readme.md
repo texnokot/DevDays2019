@@ -40,6 +40,7 @@ Information about the challenge is in the [presentation](DevOpsCampWorkshop05062
 * **Azure Command Line (Azure CLI)** installed on your machine. To install go [here](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 * **Helm**. To install go [here](https://github.com/helm/helm/blob/master/docs/install.md)
 * **Azure DevOps account**. To create account follow [here](https://azure.microsoft.com/en-in/services/devops/pipelines/)
+* **Github account**. To join Github go [here](https://github.com/join) 
 
 # 3. Workshop steps
 
