@@ -17,25 +17,25 @@ resources:
 variables:
 
   # Create container registry service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml
-  dockerRegistryServiceConnection: 'CONTAINER-REGISTRY-CONNECTION-NAME'
+  dockerRegistryServiceConnection: 'acrdevdays'
   
   # Provide the container registry url for example arcdevdays.azurecr.io
-  containerRegistry: 'CONTAINER-REGISTRY-URL'
+  containerRegistry: 'acrdevdays.azurecr.io'
   
   # Create Kubernetes service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml
-  k8sServiceConnection: 'KUBERNETES-CONNECTION-NAME'
+  k8sServiceConnection: 'aksdevdays'
   
   # Provide the name of Kubernetes cluster
-  AZDSControllerName: 'KUBERNETES-CLUSTER-NAME'
+  AZDSControllerName: 'aksdevdays'
   
   # Provide the resource group name of Kubernetes cluster
-  AZDSControllerRG: 'KUBERNETES-CLUSTER-RESOURCE-GROUP'
+  AZDSControllerRG: 'DevDaysCR2019'
   
   # Create Azure Service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-azure-rm
-  azureServiceConnection: 'AZURE-CONNECTION-NAME'
+  azureServiceConnection: 'DevDaysCR2019'
   
   # Create GitHub Service connection and provide the connection name or it's GUID here. Learn more https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml#sep-github
-  githubServiceConnection: 'GITHUB-CONNECTION-NAME'
+  githubServiceConnection: 'GitHubDevDaysCR2019'
     
   imageRepository: 'bikesharing-bikes'
   dockerfilePath: 'BikeSharingApp/Bikes/Dockerfile'
