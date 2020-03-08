@@ -283,3 +283,5 @@ Workshop is inspired by Build 2019 session: ["End to end application development
 * Azure Dev Spaces documentation: https://docs.microsoft.com/en-us/azure/dev-spaces/
 * Azure Dev Spaces Team collaboration: https://docs.microsoft.com/en-us/azure/dev-spaces/quickstart-team-development
 * Stages in Azure DevOps Pipelines: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&tabs=yaml
+
+Thank you!
