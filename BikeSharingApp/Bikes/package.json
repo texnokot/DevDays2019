@@ -5,7 +5,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "morgan": "^1.7.0",
-    "mongodb": "^2.2.24",
+    "mongodb": "^3.6.1",
     "body-parser": "^1.16.1",
     "validate.js": "^0.11.1",
     "async": "^2.1.5"
